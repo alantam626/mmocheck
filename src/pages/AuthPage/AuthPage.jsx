@@ -5,9 +5,10 @@ import LoginForm
 export default function AuthPage({setUser}) {
     return (
     <main>
-        <h1>AuthPage</h1>
-        <SignUpForm setUser = {setUser}/>
+        <h1>MMO Check Login</h1>
         <LoginForm setUser = {setUser} />
+        <SignUpForm setUser = {setUser} />
+        
     </main>
     )
 }
