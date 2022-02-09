@@ -11,8 +11,7 @@ export default function GameIndexPage() {
             const lists = await fetch("https://mmo-games.p.rapidapi.com/games", {
                 "method": "GET",
                 "headers": {
-                    "x-rapidapi-host": "mmo-games.p.rapidapi.com",
-                    "x-rapidapi-key": "ed2ef9df34msh351e46809d24b5bp176fe7jsnaac0dbc3400f"
+                    
                 }
             })
                 .then(response => {
