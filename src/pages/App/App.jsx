@@ -2,10 +2,12 @@ import './App.css';
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AuthPage from '../AuthPage/AuthPage';
-import NewOrderPage from '../NewOrderPage/NewOrderPage';
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
+import GameIndexPage from '../GameIndexPage/GameIndexPage'
 import { getUser } from '../../utilities/users-service';
+import GameDetailPage from '../GameDetailPage/GameDetailPage';
+import UserPage from '../UserPage/UserPage';
+import FavoritesPage from '../FavoritesPage/FavoritesPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -17,8 +19,10 @@ export default function App() {
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
-            <Route path="/orders/new" element={<NewOrderPage />} />
-            <Route path="/orders/" element={<OrderHistoryPage />} />
+            <Route path="/index" element={<GameIndexPage />} />
+            <Route path="/index/:id" element={<GameDetailPage />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/userpage" element={<UserPage />} />
           </Routes>
         </>
           :
