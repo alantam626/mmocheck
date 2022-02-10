@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import GameTab from '../../components/GameTab/GameTab';
 import GameDetailPage from '../GameDetailPage/GameDetailPage';
 
+
+
 export default function GameIndexPage() {
     let [gameIndex, setGameIndex] = useState([]);
 
@@ -11,7 +13,8 @@ export default function GameIndexPage() {
             const lists = await fetch("https://mmo-games.p.rapidapi.com/games", {
                 "method": "GET",
                 "headers": {
-                    
+                    "x-rapidapi-host": "mmo-games.p.rapidapi.com",
+                    "x-rapidapi-key": process.env.REACT_APP_API_KEY
                 }
             })
                 .then(response => {
@@ -29,21 +32,24 @@ export default function GameIndexPage() {
         getList()
     }, [])
 
-
-
-
     return (
         <>
             {gameIndex.map((game, idx) => {
                 return (
-                <div>
-                    <Link to={`/index/${game.title}`}>
-                    <GameTab game={game} key={idx} />
-                    </Link>
-                </div>
+                    <div>
+                        <Link to={{
+                            pathname: `/index/${game.title}`
+                        }}
+                            state={
+                                {game}
+                            }
+                        >
+                        <GameTab game={game} key={idx} />
+                        </Link>
+                    </div>
                 )
-                })
-            }   
+            })
+            }
         </>
     )
 }

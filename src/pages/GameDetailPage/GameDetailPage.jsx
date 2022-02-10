@@ -1,11 +1,15 @@
-import { useParams } from "react-router-dom"
+import { useEffect } from "react"
+import { useParams, useLocation, useLinkClickHandler } from "react-router-dom"
 
 export default function GameDetailPage() {
-    let title = useParams()
-    console.log(title)
+
+    const location = useLocation();
+    const { state } = location;
+
     return(
     <div>
-        title
+        Title: {state.game.title}
+        Description: {state.game.short_description}
     </div>
     )
 }
