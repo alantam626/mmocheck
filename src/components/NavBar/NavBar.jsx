@@ -7,7 +7,7 @@ export default function NavBar({ user, setUser }) {
         setUser(null)
     }
     return (
-        <nav>
+        <nav className="nav">
             <Link to="/index">Game Index</Link>
             <Link to="/favorites">Favorites</Link>
             <Link to="/userpage">User Page</Link>

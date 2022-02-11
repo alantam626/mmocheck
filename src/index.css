@@ -21,7 +21,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-color: #173658;
   padding: 2vmin;
   height: 100vh;
 }
@@ -150,4 +150,55 @@ button:disabled, form:invalid button[type="submit"] {
 button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: #335274;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  text-align:center;
+  border: 1px;
+  border-color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: lightblue;
+  color: black
+}
+
+.list {
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+
+.detail {
+  color: white;
+  text-align: left;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
