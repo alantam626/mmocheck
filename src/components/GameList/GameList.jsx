@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 
-export default function GameList({gameList}) {
-    const [gameList, useGameList] = useState(gameList)
+export default function GameList({gameLists}) {
+    const [gameList, setGameList] = useState(gameLists)
     useEffect(function() {
         console.log('useEffect ran only on initial mounting of component')
     }, [])
