@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import GameTab from '../../components/GameTab/GameTab';
-import GameDetailPage from '../GameDetailPage/GameDetailPage';
-
+import Search from '../../components/Search/Search';
+import * as gameindexapi from '../../utilities/gameindexapi';
 
 
 export default function GameIndexPage() {
-    let [gameIndex, setGameIndex] = useState([]);
+    const [gameIndex, setGameIndex] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(function () {
         async function getList() {
@@ -31,25 +32,24 @@ export default function GameIndexPage() {
         }
         getList()
     }, [])
-
     return (
-        <>
+        <div>
+            <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
             {gameIndex.map((game, idx) => {
-                return (
-                    <div>
+                return (<div className="list">
                         <Link to={{
                             pathname: `/index/${game.title}`
                         }}
                             state={
-                                {game}
+                                { game }
                             }
                         >
-                        <GameTab game={game} key={idx} />
+                            <GameTab game={game} key={idx} />
                         </Link>
                     </div>
                 )
             })
             }
-        </>
+        </div>
     )
 }
