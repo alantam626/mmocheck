@@ -92,9 +92,8 @@ p.error-message {
 
 form {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1.25vmin;
-  color: var(--text-light);
+  justify-content: center;
+  grid-template-columns: 1fr;
 }
 
 label {
@@ -111,6 +110,7 @@ input {
   color: var(--text-dark);
   background-image: none !important; /* prevent lastpass */
   outline: none;
+  
 }
 
 input:focus {
@@ -121,7 +121,7 @@ button, a.button {
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
-  background-color: var(--orange);
+  background-color: darkgreen;
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
@@ -161,7 +161,6 @@ button[type="submit"] {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 40%;
-  text-align:center;
   border: 1px;
   border-color: black;
   justify-content: center;
@@ -176,16 +175,17 @@ button[type="submit"] {
   display: flex;
   justify-content: space-around;
   background-color: lightblue;
-  color: black
+  color: black;
+  border-color: black;
+  border-width: 2px;
 }
 
 .list {
+  border: 1px solid;
+  border-color: black;
+  width:100%;
   display: flex;
-  flex-direction: column;  
   justify-content: center;
-  align-items: center;
-  
-  
 }
 
 .detail {
@@ -201,4 +201,9 @@ button[type="submit"] {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.loading {
+  font-size: larger;
+  text-align: center;
 }

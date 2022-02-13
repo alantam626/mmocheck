@@ -13,9 +13,9 @@ export default function Search({searchQuery, setSearchQuery}) {
 };
     
     return (<form action="/" method="GET">
-        <label htmlFor="header-search">
+        {/* <label htmlFor="header-search">
             <span className="visually-hidden">Search Game Genres</span>
-        </label>
+        </label> */}
         <input
         value={searchQuery}
         onInput={e => setSearchQuery(e.target.value)}
