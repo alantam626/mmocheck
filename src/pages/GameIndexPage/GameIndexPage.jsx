@@ -33,16 +33,17 @@ export default function GameIndexPage() {
         getList()
     }, [])
     return (
-        <div>
+        <main>
             <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
             {gameIndex.map((game, idx) => {
-                return (<div className="list">
+                return (<div>
                         <Link to={{
                             pathname: `/index/${game.title}`
                         }}
                             state={
                                 { game }
                             }
+                            className='list'
                         >
                             <GameTab game={game} key={idx} />
                         </Link>
@@ -50,6 +51,7 @@ export default function GameIndexPage() {
                 )
             })
             }
-        </div>
+            <label className='loading'>Loading</label>
+        </main>
     )
 }
