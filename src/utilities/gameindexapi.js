@@ -15,3 +15,16 @@ export function reduceGameGenres(gameIndexData) {
     let finalGenreList = [...genreSet]
     return finalGenreList
 }
+
+export function filterGames(gameIndex, query) {
+    if (!query) {
+        console.log('hit one')
+        return gameIndex;
+    }
+
+    return gameIndex.filter((game) => {
+        console.log('hit big')
+        const gameName = game.genre.toLowerCase();
+        return gameName.includes(query);
+    });
+};

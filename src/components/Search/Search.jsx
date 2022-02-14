@@ -1,18 +1,12 @@
+import { useNavigate } from 'react-router-dom'
 
-
-export default function Search({searchQuery, setSearchQuery}) {
-    const filterGames = (gameIndex, searchQuery) => {
-    if (!searchQuery) {
-        return gameIndex;
-    }
-
-    return gameIndex.filter((game) => {
-        const gameName = game.genre.toLowerCase();
-        return gameName.includes(searchQuery);
-    });
-};
-    
-    return (<form action="/" method="GET">
+export default function Search({ searchQuery, setSearchQuery }) {
+    const navigate = useNavigate();
+    const onSubmit = e => {
+        navigate(`?s=${searchQuery}`)
+        e.preventDefault()
+    } 
+    return (<form action="/" method="GET" onSubmit={onSubmit}>
         {/* <label htmlFor="header-search">
             <span className="visually-hidden">Search Game Genres</span>
         </label> */}

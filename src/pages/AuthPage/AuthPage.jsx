@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
         <h1>MMO Check Login</h1>
         <LoginForm setUser = {setUser} />
 
-        <Link to="/signup">Sign Up</Link>
+        <Link to="/signup" className="button">Sign Up</Link>
         
     </main>
     )}
