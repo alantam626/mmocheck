@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import GameTab from '../../components/GameTab/GameTab';
 import Search from '../../components/Search/Search';
+import Favorite from './Sections/Favorite';
 import * as gameindexapi from '../../utilities/gameindexapi'
 
 export default function GameIndexPage() {
@@ -10,7 +11,7 @@ export default function GameIndexPage() {
     const [gameIndex, setGameIndex] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
 
-
+    
 
     useEffect(function () {
         async function getList() {
@@ -37,10 +38,12 @@ export default function GameIndexPage() {
     }, [])
 
     const filteredGames = gameindexapi.filterGames(gameIndex, query)
+    const finalGenreList = gameindexapi.reduceGameGenres(gameIndex)
+    console.log(finalGenreList)
 
     return (
         <main>
-            <Search gameIndex={gameIndex} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+            <Search gameIndex={gameIndex} searchQuery={searchQuery} setSearchQuery={setSearchQuery} finalGenreList={finalGenreList}/>
             {filteredGames.map((game, idx) => {
                 return (<div>
                         <Link to={{
@@ -52,6 +55,7 @@ export default function GameIndexPage() {
                             className='list'
                         >
                             <GameTab game={game} key={idx} />
+                            <Favorite />
                         </Link>
                     </div>
                 )
