@@ -8,6 +8,8 @@ import { getUser } from '../../utilities/users-service';
 import GameDetailPage from '../GameDetailPage/GameDetailPage';
 import UserPage from '../UserPage/UserPage';
 import FavoritesPage from '../FavoritesPage/FavoritesPage';
+import SignUpPage from '../SignUpPage/SignUpPage';
+
 
 
 export default function App() {
@@ -17,18 +19,24 @@ export default function App() {
     <main className="App">
       {
         user ?
-        <>
-          <NavBar user={user} setUser={setUser} />
-          <Routes>
-            <Route path="/index" element={<GameIndexPage />} />
-            <Route path="/index/:id" element={<GameDetailPage />} />
-            <Route path="/favorites" element={<FavoritesPage />} />
-            <Route path="/userpage" element={<UserPage />} />
-            <Route path="/*" element={<Navigate to="/index"/>} /> 
-          </Routes>
-        </>
+          <>
+            <NavBar user={user} setUser={setUser} />
+            <Routes>
+              <Route path="/index" element={<GameIndexPage />} />
+              <Route path="/index/:id" element={<GameDetailPage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="/userpage" element={<UserPage />} />
+              <Route path="/*" element={<Navigate to="/index" />} />
+            </Routes>
+          </>
           :
-          <AuthPage setUser = {setUser} />
+          <>
+          <AuthPage setUser={setUser} />
+            <Routes>
+              <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
+            </Routes>
+          </>
+
       }
     </main>
   );

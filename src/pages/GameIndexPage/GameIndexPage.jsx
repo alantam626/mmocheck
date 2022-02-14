@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import GameTab from '../../components/GameTab/GameTab';
 import Search from '../../components/Search/Search';
-import * as gameindexapi from '../../utilities/gameindexapi';
-
+import * as gameindexapi from '../../utilities/gameindexapi'
 
 export default function GameIndexPage() {
+    const { search } = window.location;
+    const query = new URLSearchParams(search).get('s');
     const [gameIndex, setGameIndex] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+
+
 
     useEffect(function () {
         async function getList() {
@@ -32,10 +35,13 @@ export default function GameIndexPage() {
         }
         getList()
     }, [])
+
+    const filteredGames = gameindexapi.filterGames(gameIndex, query)
+
     return (
         <main>
-            <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
-            {gameIndex.map((game, idx) => {
+            <Search gameIndex={gameIndex} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+            {filteredGames.map((game, idx) => {
                 return (<div>
                         <Link to={{
                             pathname: `/index/${game.title}`
